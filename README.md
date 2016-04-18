@@ -8,3 +8,5 @@
 4. Run rake db:migrate
 5. Start you server -- 'rails s'
 6. Check your browser -- localhost:3000
+
+### Link to Application on Heroku -- https://fierce-ravine-96200.herokuapp.com
