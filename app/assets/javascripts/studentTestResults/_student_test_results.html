@@ -2,8 +2,8 @@
   <h1>Grade Keeper</h1>
 </div>
 
-<div ng-repeat="student in allStudents">
-  {{student.studentName}} - Test Score: {{student.testScore}}
+<div ng-repeat="result in results">
+  {{result.student_name}} - Test Score: {{result.test_score}}
 </div>
 
 <form ng-submit="addStudent()"

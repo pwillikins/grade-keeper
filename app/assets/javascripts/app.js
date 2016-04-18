@@ -7,7 +7,12 @@ angular.module('gradeKeeper', ['ui.router', 'templates'])
         .state('studentTestResults', {
           url: '/studentTestResults',
           templateUrl: 'studentTestResults/_student_test_results.html',
-          controller: 'StudentTestResultsCtrl'
+          controller: 'StudentTestResultsCtrl',
+          resolve: {
+            resultPromise: ['studentService', function(studentService){
+              return studentService.getAll();
+            }]
+          }
         });
 
       $urlRouterProvider.otherwise('studentTestResults');

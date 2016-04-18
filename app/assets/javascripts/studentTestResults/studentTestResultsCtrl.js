@@ -7,10 +7,10 @@ angular.module('gradeKeeper')
         return;
       }
 
-      $scope.allStudents = studentService.students;
+      $scope.results = studentService.students;
 
       $scope.addStudent = function() {
-        $scope.allStudents.push({ studentName: $scope.studentName, testScore: $scope.testScore });
+        $scope.results.push({ studentName: $scope.studentName, testScore: $scope.testScore });
         $scope.studentName = '';
         $scope.testScore = '';
       }

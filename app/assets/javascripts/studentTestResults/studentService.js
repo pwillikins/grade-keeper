@@ -1,9 +1,17 @@
 angular.module('gradeKeeper')
-  .factory('studentService', [function(){
-    var allStudents = {
-      students: []
-    };
+  .factory('studentService', [
+    '$http', function ($http) {
+      var o = {
+        students: []
+      };
 
-    return allStudents;
-  }]);
+      o.getAll = function() {
+        $http.get('/results.json').success(function(data){
+          angular.copy(data, o.students);
+        });
+      };
+
+      return o;
+
+    }]);
 
