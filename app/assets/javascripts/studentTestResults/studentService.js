@@ -17,6 +17,19 @@ angular.module('gradeKeeper')
         });
       };
 
+      o.update = function(test_result) {
+        return $http.put('/results/' + test_result.id + '.json', {"student_name": test_result.student_name, "test_score": test_result.test_score})
+          .success(function(data){
+          });
+      };
+
+      o.destroy = function(test_result) {
+        $http.delete('/results/' + test_result.id + '.json')
+          .success(function(data){
+            return o.getAll();
+        });
+      };
+
       return o;
 
     }]);

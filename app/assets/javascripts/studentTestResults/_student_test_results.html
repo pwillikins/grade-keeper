@@ -1,24 +1,53 @@
 <div class="page-header">
-  <h1>Grade Keeper</h1>
+    <h1>Grade Book</h1>
+</div>
+
+<div ng-hide="shouldHideCreating()">
+
+    <form ng-submit="addResult()"
+          style="margin-top:30px;" novalidate>
+        <h3>Add Test Result</h3>
+
+        <div class="form-group">
+            <label>Student Name</label>
+            <input type="text"
+                   class="form-control"
+                   placeholder="Student Name"
+                   ng-model="studentName" ng-minlength="1" required></input>
+            <label>Test Score</label>
+            <input type="text"
+                   class="form-control"
+                   placeholder="Test Score"
+                   ng-model="testScore" ng-minlength="1" ng-maxlength="3" required></input>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</div>
+
+<div ng-show="shouldShowEditing()">
+    <form class="edit-form" role="form" ng-submit="updateResult(editedResult)"
+          style="margin-top:30px;" novalidate>
+        <h3>Update Result</h3>
+
+        <div class="form-group">
+            <label>Student Name</label>
+            <input type="text"
+                   class="form-control"
+                   placeholder="Student Name"
+                   ng-model="editedResult.student_name" required></input>
+            <label>Test Score</label>
+            <input type="integer"
+                   class="form-control"
+                   placeholder="Test Score"
+                   ng-model="editedResult.test_score" required></input>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <button type="button" class="btn btn-default pull-right" ng-click="cancelEditing()">Cancel</button>
+    </form>
 </div>
 
 <div ng-repeat="result in results">
-  {{result.student_name}} - Test Score: {{result.test_score}}
+    <button type="button" ng-click="setEditedResult(result);startEditing();" class="btn btn-link"><span class="glyphicon glyphicon-pencil"></span></button>
+    <button type="button" ng-click="deleteResult(result)" class="btn btn-link"><span class="glyphicon glyphicon-trash"></span></button>
+    {{result.student_name}} - Test Score: {{result.test_score}}
 </div>
-
-<form ng-submit="addResult()"
-      style="margin-top:30px;">
-  <h3>Add a new students test score</h3>
-
-  <div class="form-group">
-    <input type="text"
-           class="form-control"
-           placeholder="Student Name"
-           ng-model="studentName"></input>
-    <input type="text"
-           class="form-control"
-           placeholder="Test Score"
-           ng-model="testScore"></input>
-  </div>
-  <button type="submit" class="btn btn-primary">Add</button>
-</form>
