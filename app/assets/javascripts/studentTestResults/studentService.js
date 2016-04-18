@@ -14,6 +14,7 @@ angular.module('gradeKeeper')
       o.create = function(test_result) {
         return $http.post('/results.json', test_result).success(function(data){
           o.students.push(data);
+          return o.getAll();
         });
       };
 

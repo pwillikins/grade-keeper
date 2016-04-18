@@ -25,6 +25,10 @@ gem 'angular_rails_csrf', '~> 1.0', '>= 1.0.4'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+group :test do
+  gem 'rspec', '~> 3.4'
+  gem 'rspec-rails', '~> 3.4'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

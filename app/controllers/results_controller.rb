@@ -2,11 +2,7 @@ class ResultsController < ApplicationController
 
   def index
     response = Result.build_response
-    render json: { results: response[:all_results],
-                   average_score: response[:total_average],
-                   minimum_score: response[:minimum_score],
-                   maximum_score: response[:maximum_score] },
-           status: 200
+    respond_with response, status: 200
   end
 
   def create

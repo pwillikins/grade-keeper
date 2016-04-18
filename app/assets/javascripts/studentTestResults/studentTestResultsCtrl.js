@@ -29,6 +29,7 @@ angular.module('gradeKeeper')
 
       $scope.cancelEditing = function() {
         $scope.isEditing = false;
+        return $scope.results;
       };
 
       $scope.editedResult = null;
