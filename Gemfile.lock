@@ -71,6 +71,7 @@ GEM
     multi_json (1.11.2)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    pg (0.18.4)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -164,6 +165,7 @@ DEPENDENCIES
   angular_rails_csrf (~> 1.0, >= 1.0.4)
   byebug
   jbuilder (~> 2.0)
+  pg (~> 0.18.4)
   rails (= 4.2.1)
   responders (~> 2.0)
   rspec (~> 3.4)

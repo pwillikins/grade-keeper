@@ -7,20 +7,17 @@
 
         <div ng-hide="shouldHideCreating()">
 
-            <form name="myForm" ng-submit="addResult()" novalidate>
+            <form ng-submit="addResult()" novalidate>
                 <h3>Add Test Result</h3>
 
                 <div class="form-group">
                     <label>Student Name</label>
-                    <input type="text" class="form-control" placeholder="Student Name" ng-model="studentName" ng-minlength="3" required>
-                    <p ng-show="myForm.studentName.$error.minlength" class="help-block">Name is too short.</p>
+                    <input type="text" class="form-control" placeholder="Student Name" ng-model="studentName" required>
 
                     <label>Test Score</label>
-                    <input type="text" class="form-control" placeholder="Test Score" ng-model="testScore" ng-maxlength="3" ng-minlength="1" required>
-                    <p ng-show="myForm.testScore.$error.minlength" class="help-block">Entry is too short.</p>
-                    <p ng-show="myForm.testScore.$error.maxlength" class="help-block">Entry is too long.</p>
+                    <input type="text" class="form-control" placeholder="Test Score" ng-model="testScore" required>
                 </div>
-                <button type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid">Add</button>
+                <button type="submit" class="btn btn-primary">Add</button>
             </form>
         </div>
 
@@ -33,18 +30,15 @@
                     <input type="text"
                            class="form-control"
                            placeholder="Student Name"
-                           ng-model="editedResult.student_name" ng-minlength="3" required>
-                    <p ng-show="myForm.studentName.$error.minlength" class="help-block">Name is too short.</p>
+                           ng-model="editedResult.student_name" required>
 
                     <label>Test Score</label>
                     <input type="integer"
                            class="form-control"
                            placeholder="Test Score"
-                           ng-model="editedResult.test_score" ng-maxlength="3" ng-minlength="1" required>
-                    <p ng-show="myForm.testScore.$error.minlength" class="help-block">Entry is too short.</p>
-                    <p ng-show="myForm.testScore.$error.maxlength" class="help-block">Entry is too long.</p>
+                           ng-model="editedResult.test_score"  required>
                 </div>
-                <button type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid">Update</button>
+                <button type="submit" class="btn btn-primary">Update</button>
                 <button type="button" class="btn btn-default pull-right" ng-click="cancelEditing()">Cancel</button>
             </form>
         </div>
