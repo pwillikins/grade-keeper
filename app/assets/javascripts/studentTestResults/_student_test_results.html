@@ -63,7 +63,9 @@
                             class="glyphicon glyphicon-trash"></span></button>
                 </td>
                 <td>{{result.student_name}}</td>
-                <td>{{result.test_score}}</td>
+
+                <td class="test-score" ng-show="isFailing(result)">{{ result.test_score }}</td>
+                <td ng-show="!isFailing(result)">{{result.test_score}}</td>
 
             </tr>
             </tbody>

@@ -58,4 +58,8 @@ angular.module('gradeKeeper')
         return $scope.results;
       };
 
+      $scope.isFailing = function(result) {
+        return result.test_score < 65;
+      }
+
       }]);
