@@ -6,7 +6,7 @@ angular.module('gradeKeeper', ['ui.router', 'templates'])
       $stateProvider
         .state('studentTestResults', {
           url: '/studentTestResults',
-          templateUrl: 'student_test_results/_student_test_results.html',
+          templateUrl: 'studentTestResults/_student_test_results.html',
           controller: 'StudentTestResultsCtrl'
         });
 

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  root to: 'student_test_results#angular'
+  root to: 'application#angular'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
