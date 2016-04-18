@@ -55,6 +55,6 @@ angular.module('gradeKeeper')
       $scope.deleteResult = function(result) {
         studentService.destroy(result);
         return $scope.results;
-      }
+      };
 
       }]);

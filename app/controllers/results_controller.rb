@@ -1,7 +1,12 @@
 class ResultsController < ApplicationController
 
   def index
-    respond_with Result.all, status: 200
+    response = Result.build_response
+    render json: { results: response[:all_results],
+                   average_score: response[:total_average],
+                   minimum_score: response[:minimum_score],
+                   maximum_score: response[:maximum_score] },
+           status: 200
   end
 
   def create
@@ -15,7 +20,7 @@ class ResultsController < ApplicationController
   def update
     result = Result.find(params[:id])
     updated_result = result.update_attributes(student_name: params["student_name"],
-                             test_score: params["test_score"])
+                                              test_score: params["test_score"])
     if updated_result
       respond_with result, status: 200
     else

@@ -1,53 +1,96 @@
-<div class="page-header">
+<div>
     <h1>Grade Book</h1>
 </div>
 
-<div ng-hide="shouldHideCreating()">
+<div class="row">
+    <div class="col-md-6">
 
-    <form ng-submit="addResult()"
-          style="margin-top:30px;" novalidate>
-        <h3>Add Test Result</h3>
+        <div ng-hide="shouldHideCreating()">
 
-        <div class="form-group">
-            <label>Student Name</label>
-            <input type="text"
-                   class="form-control"
-                   placeholder="Student Name"
-                   ng-model="studentName" ng-minlength="1" required></input>
-            <label>Test Score</label>
-            <input type="text"
-                   class="form-control"
-                   placeholder="Test Score"
-                   ng-model="testScore" ng-minlength="1" ng-maxlength="3" required></input>
+            <form ng-submit="addResult()" novalidate>
+                <h3>Add Test Result</h3>
+
+                <div class="form-group">
+                    <label>Student Name</label>
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Student Name"
+                           ng-model="studentName" ng-minlength="1" required></input>
+                    <label>Test Score</label>
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Test Score"
+                           ng-model="testScore" ng-minlength="1" ng-maxlength="3" required></input>
+                </div>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </form>
         </div>
-        <button type="submit" class="btn btn-primary">Add</button>
-    </form>
-</div>
 
-<div ng-show="shouldShowEditing()">
-    <form class="edit-form" role="form" ng-submit="updateResult(editedResult)"
-          style="margin-top:30px;" novalidate>
-        <h3>Update Result</h3>
+        <div ng-show="shouldShowEditing()">
+            <form class="edit-form" role="form" ng-submit="updateResult(editedResult)" novalidate>
+                <h3>Update Result</h3>
 
-        <div class="form-group">
-            <label>Student Name</label>
-            <input type="text"
-                   class="form-control"
-                   placeholder="Student Name"
-                   ng-model="editedResult.student_name" required></input>
-            <label>Test Score</label>
-            <input type="integer"
-                   class="form-control"
-                   placeholder="Test Score"
-                   ng-model="editedResult.test_score" required></input>
+                <div class="form-group">
+                    <label>Student Name</label>
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Student Name"
+                           ng-model="editedResult.student_name" required></input>
+                    <label>Test Score</label>
+                    <input type="integer"
+                           class="form-control"
+                           placeholder="Test Score"
+                           ng-model="editedResult.test_score" required></input>
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="button" class="btn btn-default pull-right" ng-click="cancelEditing()">Cancel</button>
+            </form>
         </div>
-        <button type="submit" class="btn btn-primary">Update</button>
-        <button type="button" class="btn btn-default pull-right" ng-click="cancelEditing()">Cancel</button>
-    </form>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Update</th>
+                <th>Delete</th>
+                <th>Student Name</th>
+                <th>Test Score</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr ng-repeat="result in results.results">
+                <td>
+                    <button type="button" ng-click="setEditedResult(result);startEditing();" class="btn btn-link"><span
+                            class="glyphicon glyphicon-pencil"></span></button>
+                </td>
+                <td>
+                    <button type="button" ng-click="deleteResult(result)" class="btn btn-link"><span
+                            class="glyphicon glyphicon-trash"></span></button>
+                </td>
+                <td>{{result.student_name}}</td>
+                <td>{{result.test_score}}</td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-6">
+        <h3>Metrics</h3>
+
+        <table class="table">
+            <tr>
+                <td>Average Score</td>
+                <td>{{ results.average_score }}</td>
+            </tr>
+            <tr>
+                <td>Minimum Score</td>
+                <td>{{ results.minimum_score }}</td>
+            </tr>
+            <tr>
+                <td>Maximum Score</td>
+                <td>{{ results.maximum_score }}</td>
+            </tr>
+        </table>
+    </div>
 </div>
 
-<div ng-repeat="result in results">
-    <button type="button" ng-click="setEditedResult(result);startEditing();" class="btn btn-link"><span class="glyphicon glyphicon-pencil"></span></button>
-    <button type="button" ng-click="deleteResult(result)" class="btn btn-link"><span class="glyphicon glyphicon-trash"></span></button>
-    {{result.student_name}} - Test Score: {{result.test_score}}
-</div>
