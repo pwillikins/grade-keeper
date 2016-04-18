@@ -3,14 +3,14 @@ angular.module('gradeKeeper')
     '$scope', 'studentService',
 
     function($scope, studentService) {
-      if ($scope.studentName === '' || $scope.testScore === '') {
-        return;
-      }
-
       $scope.results = studentService.students;
 
-      $scope.addStudent = function() {
-        $scope.results.push({ studentName: $scope.studentName, testScore: $scope.testScore });
+      $scope.addResult = function() {
+        if(!$scope.studentName || $scope.testScore === '') { return; }
+        studentService.create({
+          student_name: $scope.studentName,
+          test_score: $scope.testScore
+        });
         $scope.studentName = '';
         $scope.testScore = '';
       }
